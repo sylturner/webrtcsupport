@@ -23,6 +23,7 @@ if (ua.indexOf('firefox') !== -1) {
 /// Unique identifier of each opened page
 ///
 var TemPageId = Math.random().toString(36).slice(2);
+window.TemPageId = TemPageId;
 
 ///
 /// Private function that will be called once the browser 
@@ -197,7 +198,7 @@ if(needsPlugin) {
     navigator.getUserMedia = getUserMedia;
 
     // Attach a media stream to an element.
-    attachMediaStream = function(element, stream) {
+    attachMediaStream = function(stream, element, options) {
       stream.enableSoundTracks(true);
       if (element.nodeName.toLowerCase() !== 'audio') {
         var elementId = element.id.length === 0 ? Math.random().toString(36).slice(2) : element.id;
@@ -316,8 +317,7 @@ else {
 
   // export support flags and constructors.prototype && PC
   module.exports = {
-      //support: !!PC,
-      support: false,
+      support: !!PC,
       dataChannel: isChrome || isFirefox || (PC && PC.prototype && PC.prototype.createDataChannel),
       prefix: prefix,
       webAudio: !!(AudioContext && AudioContext.prototype.createMediaStreamSource),
