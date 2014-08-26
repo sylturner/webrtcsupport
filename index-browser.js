@@ -227,7 +227,7 @@ if(needsPlugin) {
       prefix: prefix,
       support: true,
       dataChannel: true,
-      webAudio: true,
+      webAudio: !!(AudioContext && AudioContext.prototype.createMediaStreamSource),
       mediaStream: true,
       screenSharing: false,
       AudioContext: AudioContext,
