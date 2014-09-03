@@ -206,6 +206,9 @@ if(needsPlugin) {
                                           candidate.candidate);
     };
     // END OF WEBRTC INTERFACE 
+    window.RTCPeerConnection = RTCPeerConnection;
+    window.RTCSessionDescription = RTCSessionDescription;
+    window.RTCIceCandidate = RTCIceCandidate;
   };
 
 
@@ -231,9 +234,9 @@ if(needsPlugin) {
       mediaStream: true,
       screenSharing: false,
       AudioContext: AudioContext,
-      PeerConnection: RTCPeerConnection,
-      SessionDescription: RTCSessionDescription,
-      IceCandidate: RTCIceCandidate
+      PeerConnection: window.RTCPeerConnection,
+      SessionDescription: window.RTCSessionDescription,
+      IceCandidate: window.RTCIceCandidate
   };
 }
 else {
